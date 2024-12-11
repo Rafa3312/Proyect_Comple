@@ -32,7 +32,7 @@ export default async function Ventas() {
             <table className="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No.</th>
                         <th>Fecha</th>
                         <th>Producto</th>
                         <th>Usuario</th>

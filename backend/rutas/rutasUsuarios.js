@@ -10,50 +10,45 @@ var { getSessionUsuario,
     modificarUsuario,
     nombresUsuarios } = require("../bd/usuariosBD");
 
-    rutas.get("/mostrar", async (req, res) => {
-        try {
-            const usuarios = await mostrarUsuarios();
-    
-            // Si no se envía un término de búsqueda, retorna todos los usuarios
-            if (!req.query.search) {
-                return res.status(200).json(usuarios);
-            }
-    
-            // Filtra los usuarios si se proporciona un término de búsqueda
-            const search = req.query.search.toLowerCase();
-            const usuariosFiltrados = usuarios.filter(usuario => 
-                usuario.nombre.toLowerCase().includes(search)
-            );
-    
-            // Retorna los usuarios filtrados
-            res.status(200).json(usuariosFiltrados);
-        } catch (error) {
-            console.error("Error al mostrar usuarios:", error);
-            res.status(500).json({ error: "Error al obtener los usuarios" });
-        }
-    });
-    
+// Ruta para mostrar todos los usuarios o realizar búsqueda
+rutas.get("/mostrar", async (req, res) => {
+    try {
+        const search = req.query.search || ""; // Obtener el término de búsqueda de la query string
+        const usuarios = await mostrarUsuarios(search); // Pasamos el término de búsqueda
 
-rutas.get("/nombres",async(req,res)=>{
-    const usuarios=await nombresUsuarios();
+        // Retorna los usuarios que coinciden con el filtro
+        res.status(200).json(usuarios);
+    } catch (error) {
+        console.error("Error al mostrar usuarios:", error);
+        res.status(500).json({ error: "Error al obtener los usuarios" });
+    }
+});
+
+// Ruta para obtener los nombres de usuarios
+rutas.get("/nombres", async (req, res) => {
+    const usuarios = await nombresUsuarios();
     res.json(usuarios);
 });
 
-rutas.get("/buscar/:id", async(req, res)=>{
-    var usuarioValido= await buscarPorId(req.params.id);
+// Ruta para buscar un usuario por su ID
+rutas.get("/buscar/:id", async (req, res) => {
+    var usuarioValido = await buscarPorId(req.params.id);
     res.json(usuarioValido);
 });
 
-rutas.delete("/borrar/:id",async(req,res)=>{
-    var borrado=await borrarUsuario(req.params.id);
+// Ruta para borrar un usuario por su ID
+rutas.delete("/borrar/:id", async (req, res) => {
+    var borrado = await borrarUsuario(req.params.id);
     res.json(borrado);
 });
 
-rutas.post("/nuevo",async(req,res)=>{
+// Ruta para crear un nuevo usuario
+rutas.post("/nuevo", async (req, res) => {
     var usuarioValido = await nuevoUsuario(req.body);
     res.json(usuarioValido);
 });
 
+// Ruta para modificar un usuario por su ID
 rutas.put("/modificar/:id", async (req, res) => {
     const id = req.params.id;
     const datosNuevos = req.body;
@@ -61,23 +56,21 @@ rutas.put("/modificar/:id", async (req, res) => {
     res.json(resultado);
 });
 
-rutas.post("/login",async(req,res)=>{
-    const usuarioCorrecto=await login(req,req.body.usuario,req.body.password);
+// Ruta para login
+rutas.post("/login", async (req, res) => {
+    const usuarioCorrecto = await login(req, req.body.usuario, req.body.password);
     res.json(usuarioCorrecto);
 });
 
-rutas.get("/getSessionUsuario",(req,res)=>{
-   // res.json(getSessionUsuario(req));
-   var sesionValida=getSessionUsuario(req);
-   console.log("getsession----");
-   console.log(sesionValida);
-   res.json(sesionValida);
-   
-   
+// Ruta para obtener la sesión de un usuario
+rutas.get("/getSessionUsuario", (req, res) => {
+    var sesionValida = getSessionUsuario(req);
+    res.json(sesionValida);
 });
 
-rutas.get("/getSessionAdmin",(req,res)=>{
+// Ruta para obtener la sesión de un admin
+rutas.get("/getSessionAdmin", (req, res) => {
     res.json(getSessionUsuario(req));
 });
 
-module.exports=rutas; 
+module.exports = rutas;

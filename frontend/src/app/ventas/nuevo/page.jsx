@@ -134,7 +134,7 @@ export default function NuevaVenta() {
                                 type="submit"
                                 className="btn btn-primary col-12"
                             >
-                                Guardar Nueva Venta
+                                Guardar la nueva Venta
                             </button>
                         </center>
                     </div>

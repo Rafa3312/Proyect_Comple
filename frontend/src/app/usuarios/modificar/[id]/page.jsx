@@ -32,7 +32,7 @@ export default function ModificarUsuario({ params }) {
             <form onSubmit={modificarUsuario} className="col-6 mt-5">
                 <div className="card">
                     <div className="card-header">
-                        <center><h1>Modificar Usuario</h1></center>
+                        <center><h1>Modificar el usuario</h1></center>
                     </div>
                     <div className="card-body">
                         <div className="mb-3">

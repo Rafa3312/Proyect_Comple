@@ -22,7 +22,7 @@ export default function SearchInput({ label, apiUrl, id, selectedId, setSelected
     const handleSelect = (item) => {
         setSelectedId(item.id);
         setQuery(item.nombre);
-        setResults([]);
+        setResults([]); // Limpiamos los resultados después de seleccionar
     };
 
     return (
@@ -35,8 +35,8 @@ export default function SearchInput({ label, apiUrl, id, selectedId, setSelected
                 onChange={handleSearch}
                 required
                 type="text"
+                placeholder="Buscar..."
             />
-            <input type="hidden" id={`${id}-hidden`} value={selectedId} />
             {results.length > 0 && (
                 <ul className="list-group">
                     {results.map((item) => (

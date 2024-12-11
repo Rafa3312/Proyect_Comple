@@ -1,7 +1,7 @@
 export default function universidad({params}){
     return(
        <>
-      <h1>Estas en productos</h1>
+      <h1>Productos</h1>
        <p>{params.id}</p>
        </> 
     );

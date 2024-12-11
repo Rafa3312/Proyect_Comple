@@ -2,7 +2,7 @@
 import axios from "axios"
 async function verificarLogin(e) {
     e.preventDefault();
-    console.log("estas en verificar");
+    console.log("Verificar");
     const url="http://localhost:3000/usuarios/login"
     const datos={
         usuario:document.getElementById("usuario").value,

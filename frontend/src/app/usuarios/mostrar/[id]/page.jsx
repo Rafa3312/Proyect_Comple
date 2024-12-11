@@ -1,7 +1,7 @@
 export default function universidad({params}){
     return(
        <>
-      <h1>Estas en usuarios</h1>
+      <h1>Usuarios</h1>
        <p>{params.id}</p>
        </> 
     );

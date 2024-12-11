@@ -19,7 +19,7 @@ export default function BuscarUsuario() {
             <form onSubmit={handleSubmit} className="col-6 mt-5">
                 <div className="card">
                     <div className="card-header">
-                        <center><h1>Buscar Usuario para Modificar</h1></center>
+                        <center><h1>Buscar el usuario para modificar</h1></center>
                     </div>
                     <div className="card-body">
                         <div className="mb-3">
@@ -29,7 +29,7 @@ export default function BuscarUsuario() {
                     </div>
                     <div className="card-footer">
                         <center>
-                            <button className="btn btn-primary col-12" type="submit">Buscar Usuario</button>
+                            <button className="btn btn-primary col-12" type="submit">Buscar el usuario</button>
                         </center>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ export default function NuevoProducto() {
             <form onSubmit={guardarProducto} className="col-6 mt-5" action="" method="post">
                 <div className="card">
                     <div className="card-header">
-                        <center><h1>Nuevo Producto</h1></center>
+                        <center><h1>Introducir el nuevo Producto</h1></center>
                     </div>
                     <div className="card-body">
                         <div className="mb-3">
@@ -39,13 +39,13 @@ export default function NuevoProducto() {
                             <input className="form-control" id="precio" required type="number" step="0.01" />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="stock" className="form-label">Stock</label>
+                            <label htmlFor="stock" className="form-label">Existencias</label>
                             <input className="form-control" id="stock" required type="number" />
                         </div>
                     </div>
                     <div className="card-footer">
                         <center>
-                            <button type="submit" className="btn btn-primary col-12">Guardar Nuevo Producto</button>
+                            <button type="submit" className="btn btn-primary col-12">Guardar nuevo producto</button>
                         </center>
                     </div>
                 </div>
